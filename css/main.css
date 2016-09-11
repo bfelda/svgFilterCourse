@@ -110,21 +110,7 @@ img{
 .overlay{
     position:absolute;
     top:0;
-}
-
-.black-white {
-    -webkit-filter: url('#black-white');    
-    filter: url('#black-white');
-}
-
-.contrast-filter{
-    filter: url('#contrast-filter');
-    -webkit-filter: url('#contrast-filter');
-}
-
-.bw2{
-    filter: url('#bw2');
-    -webkit-filter: url('#bw2');
+    z-index: 1;
 }
 
 
