@@ -12,12 +12,13 @@
             .filtered2{
                 -webkit-filter: url('#svgFiltered2');    
                 filter: url('#svgFiltered2');
-            }
-
-            .dropFilter {
-                color:red;
-                -webkit-filter: url('#dropFilter');    
-                filter: url('#dropFilter');
+                -webkit-mask-image: -webkit-gradient(linear, 50% top, 50% bottom, 
+                color-stop(0.00,  rgba(0,0,0,1)),
+                color-stop(0.40,  rgba(0,0,0,.8)),
+                color-stop(0.60,  rgba(0,0,0,.4)),
+                color-stop(0.70,  rgba(0,0,0,0)),
+                color-stop(0.80,  rgba(0,0,0,.5)),
+                color-stop(1.00,  rgba(0,0,0,.75)));
             }
         </style>
     </head>
@@ -35,76 +36,65 @@
             <img src="./img/barcelona.jpg">
         </div>
         <div>
-            <p class="dropFilter">This is a paragraph</p>
-        </div>
-        <div>
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                 <defs>
-                    <filter id="dropFilter">
-                        <!-- Blur the source alpha to make a nice shadow. -->
-                        <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
-                        <!-- Move the shadow over a bit. -->
-                        <feOffset in="blur" dx="3" dy="3" result="offsetBlur"/>
-                        <!-- Put everything together. Blur then graphic. -->
-                        <feMerge>
-                        <feMergeNode in="offsetBlur"/>
-                        <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
+                    <filter id="svgFiltered">
+                        <feColorMatrix
+                            in="sharpen"
+                            type="saturate"
+                            values="1.8"
+                            result="overSaturate"/>
+
+
+                        <feConvolveMatrix order="3" 
+                            in="overSaturate"
+                            kernelMatrix=" 
+                             1   -1.3   1
+                            -1.3 -1.3 -1.3
+                             1   -1.3   1"
+                            result="sharpen"/>
+
+                        <feColorMatrix 
+                            in="sharpen" 
+                            result="contrast"
+                            type="matrix" 
+                            values="1.2 0 0 0 -0.05 
+                                    0 1.2 0 0 -0.05 
+                                    0 0 1.2 0 -0.05
+                                    0 0 0 1 0"/>
                     </filter>
 
-                    <
 
                     <filter id="svgFiltered2">
-                        <feGaussianBlur 
-                            in="sharpen"  
-                            stdDeviation="0" />
-                    </filter>
-                    
-                    <filter id="svgFiltered">
-                        <feColorMatrix 
-                            in="SourceGraphic"
-                            values="
-                            2     -0.05 -0.05  0 0
-                            -0.05 2     -0.05 -0.05 0
-                            -0.05 -0.05 2 -0.05 0
-                            0  0  0 1 0"
-                            result="Saturate"/> 
+                        <feColorMatrix
+                            in="sharpen"
+                            type="saturate"
+                            values="1.8"
+                            result="overSaturate"/>
 
-                            <feConvolveMatrix order="3" 
-                            in="Saturate"
+                        <feConvolveMatrix order="3" 
+                            in="overSaturate"
                             kernelMatrix=" 
                             1 -1.3   1
                             -1.3 -1.3 -1.3
                             1 -1.3   1"
                             result="sharpen"/>
 
-                            <feFlood flood-color="gray"/>
+                        <feColorMatrix 
+                            in="sharpen" 
+                            result="contrast"
+                            type="matrix" 
+                            values="1.2 0 0 0 -0.05 
+                                    0 1.2 0 0 -0.05 
+                                    0 0 1.2 0 -0.05
+                                    0 0 0 1 0"/>
 
-                        <!--<feColorMatrix 
-                            in="inv" 
-                            values="
-                            1 0 0 0 0
-                            0 1 0 0 0
-                            0 0 1 0 0
-                            0 0  0 .5 0"
-                            result="opa"/> -->
-
-                            <!--<feColorMatrix
-                            in="opa"
-                            type="saturate"
-                            resul="bw"/>-->
+                        <feGaussianBlur 
+                            in="sharpen"
+                            stdDeviation="2" />
                     </filter>
-
-                    <!--<filter id="contrast-filter" x="0" y="0">  
-                        <feColorMatrix in="SourceGraphic" type="bw" values="10" result="A"/>
-                        <feGaussianBlur in="A"  stdDeviation="10" />
-                    </filter>-->
                 </defs>
             </svg>
         </div>
-        <!--<script src="https://code.jquery.com/jquery1.12.0.min.js"></script>-->
-        <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery1.12.0.min.js"><\/script>')</script>-->
-        <!--<script src="js/plugins.js"></script>-->
-        <script src="js/main.js"></script>
     </body>
 </html>
