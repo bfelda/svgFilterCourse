@@ -48,15 +48,7 @@
                             stdDeviation="4" />
                         <feBlend in="SourceGraphic" in2="blur" result="blend1" mode="overlay"/>
 
-                        <feColorMatrix in="blend2" out="saturate"
-                            in="blend1"
-                            result="opa"
-                            values="1 0 0 0 0
-                                    0 1 0 0 0
-                                    0 0 1 0 0
-                                    0 0 0 .8 0"/>
-
-                        <feBlend in="opa" in2="SourceGraphic" result="blend2" mode="soft-light"/>
+                        <feBlend in="blend1" in2="SourceGraphic" result="blend2" mode="soft-light"/>
 
                         <feColorMatrix in="blend2" out="saturate"
                             values="1 0 0 0 0

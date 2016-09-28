@@ -1,0 +1,25 @@
+{
+  "name": "svgfiltercourse",
+  "version": "1.0.0",
+  "description": "Material for SVG course at MKE DOT NET Conference",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bfelda/svgFilterCourse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bfelda/svgFilterCourse/issues"
+  },
+  "homepage": "https://github.com/bfelda/svgFilterCourse#readme",
+  "dependencies": {
+    "draggable": "^4.0.4"
+  }
+}

@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/main.css"/>
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+        <style>
+            body{
+                font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+            }
+            .flexContainer{
+                margin-top: 50px;
+            }
+            .selected{
+                margin: 30px 0;
+                height:75px;
+            }
+            .deselected{
+                margin: 0;
+                height:75px;
+            }
+            .contents{
+                margin-left:30%;
+            }
+            .contents > i{
+                margin-right: 10px;
+                vertical-align:center;
+            }
+            .blobs{
+                filter:url('#goo');
+            }
+            .blob{
+                align-items:center;
+                font-size:24px;
+                transform: translateZ(0);
+                transition: all ease-out .2s;
+                width:100%;
+                display:flex;
+                color:white;
+                cursor:pointer;
+                background:#5677fc;
+                -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flexContainer">
+            <div class="blobs">
+                <div id="_0" onclick="show(this)" class="blob deselected">
+                    <div class="contents">
+                        <i class="ion-ios-speedometer"></i><span>Dashboard</span>
+                    </div>
+                </div>
+                <div id="_1" onclick="show(this)" class="blob deselected">
+                    <div class="contents">
+                        <i class="ion-ios-game-controller-b"></i><span>Gaming</span>
+                    </div>
+                </div>
+                <div id="_2" onclick="show(this)" class="blob deselected">
+                    <div class="contents">
+                        <i class="ion-ios-nutrition"></i><span>Carrots</span>
+                    </div>                
+                </div>
+                <div id="_3" onclick="show(this)" class="blob deselected">
+                    <div class="contents">
+                        <i class="ion-android-bulb"></i><span>Ideas</span>
+
+                    </div>                </div>
+                <div id="_4" onclick="show(this)" class="blob deselected">
+                    <div class="contents">
+                        <i class="ion-planet"></i><span>Saturn</span>
+                    </div>
+                </div>
+                <div id="_5" onclick="show(this)" class="blob deselected">
+                    <div class="contents">
+                        <i class="ion-social-github"></i><span>Gists</span>
+                    </div>                
+                </div>
+                <div id="_6" onclick="show(this)" class="blob deselected">
+                    <div class="contents">
+                        <i class="ion-android-bar"></i><span>Martinis</span>
+                    </div>
+                </div>
+                <div id="_7" onclick="show(this)" class="blob deselected">
+                    <div class="contents">
+                        <i class="ion-android-color-palette"></i><span>Artwork</span>
+                    </div>
+                </div>
+                <div id="_8" onclick="show(this)" class="blob deselected">
+                    <div class="contents">
+                        <i class="ion-android-options"></i><span>Settings</span>
+                    </div>                
+                </div>
+            </div>
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <filter id="goo">
+                    <feGaussianBlur 
+                        in="SourceGraphic" 
+                        stdDeviation="20" 
+                        result="blur" />
+                    <feColorMatrix 
+                        in="blur" 
+                        mode="matrix" 
+                        result="goo"
+                        values="1 0 0 0 0  
+                                0 1 0 0 0  
+                                0 0 1 0 0  
+                                0 0 0 18 -9" />
+                    <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+    </body>
+    <script type="text/javascript">
+        var blobs = document.getElementsByClassName("blob"),
+            l = blobs.length,
+            currentSelected = 0;
+
+        document.onkeydown = function myFunction() {
+            if([38, 40].indexOf(event.keyCode) > -1){
+                event.preventDefault();
+                switch (event.keyCode) {
+                    case 38:
+                        goUp();
+                        break;
+                    case 40:
+                        goDown();
+                        break;
+                }
+            }
+        }
+
+        function show(el) {
+            for(var i=0; i<l; i++) {
+                var blob = blobs[i];
+                if(!blob.classList.contains('deselected')){
+                    blob.classList.remove('selected');
+                    blob.classList.add('deselected');
+                }
+            }
+            currentSelected = parseInt(el.id.split('_')[1]);
+            el.classList.remove('deselected');
+            el.classList.add('selected');
+        }
+
+        function goUp() {
+            blobs[currentSelected - 1].click();
+        }
+
+        function goDown() {
+            blobs[currentSelected + 1].click();
+        }
+    </script>
+</html>
