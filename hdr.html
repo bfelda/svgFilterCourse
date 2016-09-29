@@ -7,8 +7,7 @@
             svg, img{
                 display:block;
             }
-            .filtered{
-                -webkit-filter: url('#svgFiltered');    
+            .filtered{  
                 filter: url('#svgFiltered');
             }
         </style>
@@ -19,7 +18,6 @@
         <!--https://www.flickr.com/photos/kolnedra/2257529395/-->
 
         <div class="imageContainer">
-            <!--<img class="overlay filtered2" src="./img/milwaukee1.jpg">      -->
             <img class="filtered" src="./img/dawn.jpg">            
             
                   
@@ -42,6 +40,7 @@
                             <feFuncB type="table" tableValues="1 0"/>
                             <feFuncR type="table" tableValues="1 0"/>
                         </feComponentTransfer>
+
                         <feGaussianBlur 
                             in="inv"
                             out="blur"
@@ -50,7 +49,10 @@
 
                         <feBlend in="blend1" in2="SourceGraphic" result="blend2" mode="soft-light"/>
 
-                        <feColorMatrix in="blend2" out="saturate"
+                        <feColorMatrix 
+                            in="blend2" 
+                            out="saturate"
+                            type="matrix"
                             values="1 0 0 0 0
                                     0 1 0 0 0
                                     0 0 1.3 0 0

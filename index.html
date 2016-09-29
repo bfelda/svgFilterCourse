@@ -2,109 +2,22 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/main.css">
-        <style>
-            .filtered{
-                -webkit-filter: url('#svgFiltered');    
-                filter: url('#svgFiltered');
-            }
-
-            .filtered2{
-                -webkit-filter: url('#svgFiltered2');    
-                filter: url('#svgFiltered2');
-                mask: url(#fade_right_svg_mask);
-                -webkit-mask-image: -webkit-gradient(linear, 50% top, 50% bottom, 
-                color-stop(0.00,  rgba(0,0,0,1)),
-                color-stop(0.40,  rgba(0,0,0,.8)),
-                color-stop(0.60,  rgba(0,0,0,.4)),
-                color-stop(0.70,  rgba(0,0,0,0)),
-                color-stop(0.80,  rgba(0,0,0,.75)),
-                color-stop(1.00,  rgba(0,0,0,1)));
-            }
-        </style>
     </head>
     <body>
+        <ul style="list-style:none">
+            <li>
+                <a href="/hdr.html">HDR Effect</a>
+            </li>
+            <li>
+                <a href="/mini.html">Miniature Effect</a>
+            </li>
+            <li>
+                <a href="/goo.html">Goo Effect</a>
+            </li>
+            <li>
+                <a href="/gooList.html">Goo List</a>
+            </li>
+        </ul>
 
-    <!--######################## PS TUTORIAL ##########################-->
-<!--http://mashable.com/2013/09/24/photoshop-tilt-shift/#ayLUs8ibm8qC-->
-
-        <div class="imageContainer">
-            <img class="overlay filtered2" src="./img/barcelona.jpg">      
-            <img class="filtered" src="./img/barcelona.jpg">            
-            
-                  
-            <img src="./img/barcelona.jpg">
-        </div>
-        <div>
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <defs>
-                    <filter id="svgFiltered">
-                        <feColorMatrix
-                            in="SourceGraphic"
-                            type="saturate"
-                            values="1.5"
-                            result="overSaturate"/>
-
-                        <feConvolveMatrix order="3" 
-                            in="overSaturate"
-                            kernelMatrix=" 
-                             1   .3   1
-                            -1.3 -1.3 -1.3
-                             1   -1.3   1"
-                            result="sharpen"/>
-
-                        <feColorMatrix 
-                            in="sharpen" 
-                            result="contrast"
-                            type="matrix" 
-                            values="1.3 0 0 0 -0.05 
-                                    0 1.3 0 0 -0.05 
-                                    0 0 1.3 0 -0.05
-                                    0 0 0   1  0"/>
-                    </filter>
-
-                    <filter id="svgFiltered2">
-                        <feColorMatrix
-                            in="SourceGraphic"
-                            type="saturate"
-                            values="1.5"
-                            result="overSaturate"/>
-
-                        <feConvolveMatrix order="3" 
-                            in="overSaturate"
-                            kernelMatrix=" 
-                            1 -1.3   1
-                            -1.3 -1.3 -1.3
-                            1 -1.3   1"
-                            result="sharpen"/>
-
-                        <feColorMatrix 
-                            in="sharpen" 
-                            result="contrast"
-                            type="matrix" 
-                            values="1.3 0 0 0 -0.05 
-                                    0 1.3 0 0 -0.05 
-                                    0 0 1.3 0 -0.05
-                                    0 0 0 1 0"/>
-
-                        <feGaussianBlur 
-                            in="sharpen"
-                            stdDeviation="2" />
-                    </filter>
-
-                    <mask id="fade_right_svg_mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-                        <linearGradient id="fade_right_svg_gradient" gradientUnits="objectBoundingBox" x1="50%" y1="0%" x2="50%" y2="100%">
-                            <stop stop-color="white" stop-opacity="1" offset="0"></stop>
-                            <stop stop-color="white" stop-opacity="0.8" offset="0.4"></stop>
-                            <stop stop-color="white" stop-opacity="0.4" offset="0.6"></stop>
-                            <stop stop-color="white" stop-opacity="0" offset="0.7"></stop>
-                            <stop stop-color="white" stop-opacity="0.75" offset="0.8"></stop>
-                            <stop stop-color="white" stop-opacity="1" offset="1"></stop>
-                        </linearGradient>
-                    <rect x="0" y="0" width="1" height="1" fill="url(#fade_right_svg_gradient)"></rect>
-                    </mask>
-                </defs>
-            </svg>
-        </div>
     </body>
 </html>
