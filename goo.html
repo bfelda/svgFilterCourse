@@ -9,6 +9,7 @@
             }
             .blob{
                 left:0;
+                top:0;
                 width:100px;
                 height:100px;
                 display:flex !important;
@@ -19,7 +20,7 @@
                 color:white;
                 font-size:48px;
                 cursor:pointer;
-                background:black;
+                background:#ff00ff;
                 -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
             }
             /*.blob:first-child {
@@ -39,11 +40,11 @@
                 class="blob">
                 <i class="ion-close"></i>
             </div>
-            <div 
+            <div
                 class="blob">
                 <i class="ion-planet"></i>
             </div>
-            <div 
+            <div
                 class="blob">
                 <i class="ion-log-in"></i>                
             </div>
@@ -65,8 +66,8 @@
                                 0 0 1 0 0  
                                 0 0 0 18 -7" />
 
-                    <feBlend in="SourceGraphic" in2="goo" />
-                    <!--<feComposite in="SourceGraphic" in2="goo" operator="atop"/>-->
+                    <!--<feBlend in="SourceGraphic" in2="goo" />-->
+                    <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
                 </filter>
             </defs>
         </svg>
@@ -90,6 +91,7 @@
             for(var i=0; i<l; i++) {
                 var blob = blobs[i];
                 blob.style.left = 0;
+                blob.style.top = 0;
             }
         }
         function expand() {

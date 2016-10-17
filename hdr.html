@@ -18,6 +18,7 @@
         <!--https://www.flickr.com/photos/kolnedra/2257529395/-->
 
         <div class="imageContainer">
+            <!--<div style="background:blue; width:700px;height:400px;position:absolute"></div>-->
             <img class="filtered" src="./img/dawn.jpg">            
             
                   
@@ -45,13 +46,20 @@
                             in="inv"
                             out="blur"
                             stdDeviation="4" />
-                        <feBlend in="SourceGraphic" in2="blur" result="blend1" mode="overlay"/>
 
-                        <feBlend in="blend1" in2="SourceGraphic" result="blend2" mode="soft-light"/>
+                        <feBlend 
+                            in="SourceGraphic" 
+                            in2="blur" 
+                            result="blend1" 
+                            mode="overlay"/>
+
+                        <feBlend 
+                            in="blend1" 
+                            in2="SourceGraphic" 
+                            result="blend2" 
+                            mode="soft-light"/>
 
                         <feColorMatrix 
-                            in="blend2" 
-                            out="saturate"
                             type="matrix"
                             values="1 0 0 0 0
                                     0 1 0 0 0

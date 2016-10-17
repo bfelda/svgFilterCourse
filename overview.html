@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/main.css">
+        <style>
+            svg, img{
+                display:block;
+            }
+
+            .imageContainer{
+                margin:auto;
+                width: 400px;
+                height:100vh;
+                display:flex;
+                flex-direction:column;
+                align-items: center;
+                justify-content: space-around;
+            }
+
+            .square{
+                width: 300px;
+                height:200px;
+                border: solid 20px lavender;
+            }
+
+            .filtered{ 
+                font-size: 48px;
+                color: lime;
+                font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+                filter: url('#svgFiltered');
+            }
+        </style>
+    </head>
+    <body>
+
+    <!--######################## PS TUTORIAL ##########################-->
+        <!--https://www.flickr.com/photos/kolnedra/2257529395/-->
+
+        <div class="imageContainer">
+            <!--<div style="background:blue; width:700px;height:400px;position:absolute"></div>-->
+            <img class="filtered" src="./img/vintage.jpg">            
+            
+            <div class="filtered">MKE DOT NET</div>
+            
+            <div class="filtered square"></div>
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <filter id="svgFiltered">
+                        <!--<feGaussianBlur 
+                            in="SourceGraphic"
+                            stdDeviation="3"/>-->
+
+                        <!--<feColorMatrix 
+                            in="SourceGraphic"
+                            type="saturate"
+                            values="0"/>-->
+
+                        <!--<feComponentTransfer
+                            in="fuzz"
+                            out="inv">
+                            <feFuncG type="linear" slope="1"/>
+                            <feFuncB type="linear" slope="1"/>
+                            <feFuncR type="linear" slope="1"/>
+                        </feComponentTransfer>-->
+
+                        <!--<feComponentTransfer
+                            in="fuzz"
+                            out="inv">
+                            <feFuncG type="table" tableValues="0 .2 .4 .6 .8 1"/>
+                            <feFuncB type="table" tableValues="0 .2 .4 .6 .8 1"/>
+                            <feFuncR type="table" tableValues="0 .2 .4 .6 .8 1"/>
+                        </feComponentTransfer>-->
+                                    
+                        <!--<feTurbulence 
+                            type="fractalNoise" 
+                            result="fuzz" 
+                            baseFrequency="0.07" 
+                            numOctaves="1" 
+                            stitchTiles="stitch"/>-->
+
+
+
+
+                        <!--<feComposite 
+                            in="SourceGraphic" 
+                            in2="opa" 
+                            result="blend1"
+                            operator="out"/>-->
+
+                        <feColorMatrix 
+                            type="matrix"
+                            in="SourceGraphic"
+                            result="opa"
+                            values="1 0 0 0 0
+                                    0 1 0 0 0
+                                    0 0 1 0 0
+                                    0 0 0 1 0"/>
+
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+    </body>
+</html>

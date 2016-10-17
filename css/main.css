@@ -102,11 +102,6 @@ img{
     width:100%;
 }
 
-.invert{
-    -webkit-filter: url('#invert');    
-    filter: url('#invert');
-}
-
 .overlay{
     position:absolute;
     top:0;

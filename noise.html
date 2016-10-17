@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/main.css">
+        <style>
+            svg, img{
+                display:block;
+            }
+            .filtered{  
+                filter: url('#svgFiltered');
+            }
+        </style>
+    </head>
+    <body>
+
+    <!--######################## PS TUTORIAL ##########################-->
+        <!--https://www.flickr.com/photos/kolnedra/2257529395/-->
+
+        <div class="imageContainer">
+            <!--<div style="background:blue; width:700px;height:400px;position:absolute"></div>-->
+            <img class="filtered" src="./img/vintage.jpg">            
+            
+                  
+            <img src="./img/vintage.jpg">
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <filter id="svgFiltered">
+
+                        <feColorMatrix 
+                            type="matrix"
+                            in="SourceGraphic"
+                            result="sat"
+                            values="1 0 0 0 0
+                                    0 1 0 0 0
+                                    0 0 1 0 0
+                                    0 0 0 1 0"/>
+
+                        <feTurbulence 
+                            type="fractalNoise" 
+                            result="fuzz" 
+                            baseFrequency="0.07" 
+                            numOctaves="1" 
+                            stitchTiles="stitch"/>
+
+
+                        <feComponentTransfer
+                            in="fuzz"
+                            out="inv">
+                            <feFuncG type="table" tableValues="1 0"/>
+                            <feFuncB type="table" tableValues="1 0"/>
+                            <feFuncR type="table" tableValues="1 0"/>
+                        </feComponentTransfer>
+
+                        <feColorMatrix 
+                            type="matrix"
+                            in="inv"
+                            result="opa"
+                            values="1 0 0 0 0
+                                    0 1 0 0 0
+                                    0 0 1 0 0
+                                    0 0 0 .6 0"/>
+
+                        <feDisplacementMap 
+                            xChannelSelector="R" 
+                            yChannelSelector="G" 
+                            in="SourceGraphic" 
+                            in2="opa" 
+                            result='mangled'
+                            scale="200" />
+
+                        <feComposite 
+                            in="sat" 
+                            in2="mangled" 
+                            result="blend1"
+                            operator="in"/>
+
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+    </body>
+</html>
