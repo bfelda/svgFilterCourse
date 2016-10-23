@@ -4,11 +4,26 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/main.css">
         <style>
+            body{
+                font-family: "Segoe UI";
+            }
             svg, img{
                 display:block;
             }
             .filtered{  
                 filter: url('#svgFiltered');
+            }
+            .textover{
+                height:400px;
+                position:absolute;
+                color:white;
+                background:rgba(0, 0, 0, 0.6);
+                padding: 20px;
+                text-transform:uppercase;
+                z-index: 2;
+                font-size: 42px;
+                top:20px;
+                left:80px;
             }
         </style>
     </head>
@@ -18,64 +33,63 @@
         <!--https://www.flickr.com/photos/kolnedra/2257529395/-->
 
         <div class="imageContainer">
+            <!--<div class="textover">Awesome header</div>-->
             <!--<div style="background:blue; width:700px;height:400px;position:absolute"></div>-->
-            <img class="filtered" src="./img/vintage.jpg">            
+            <img class="filtered" src="./img/milwaukee1.jpg">            
             
                   
-            <img src="./img/vintage.jpg">
+            <img src="./img/milwaukee1.jpg">
         </div>
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                 <defs>
                     <filter id="svgFiltered">
-
-                        <feColorMatrix 
-                            type="matrix"
+                        <!--<feComponentTransfer
                             in="SourceGraphic"
+                            out="inv">
+                            <feFuncG type="discrete" tableValues=".1 .2 .3 .4 .5 .6 .7 .8 .9 1"/>
+                            <feFuncB type="discrete" tableValues=".1 .2 .3 .4 .5 .6 .7 .8 .9 1"/>
+                            <feFuncR type="discrete" tableValues=".1 .2 .3 .4 .5 .6 .7 .8 .9 1"/>
+                        </feComponentTransfer>-->
+
+                        <!--<feColorMatrix 
+                            type="matrix"
+                            in="inv"
                             result="sat"
                             values="1 0 0 0 0
-                                    0 1 0 0 0
-                                    0 0 1 0 0
-                                    0 0 0 1 0"/>
+                                    1 1 0 0 0
+                                    1 0 1 0 0
+                                    0 0 0 1 0"/>-->
 
-                        <feTurbulence 
+                        <!--<feTurbulence 
                             type="fractalNoise" 
                             result="fuzz" 
                             baseFrequency="0.07" 
                             numOctaves="1" 
-                            stitchTiles="stitch"/>
+                            stitchTiles="stitch"/>-->
 
-
-                        <feComponentTransfer
-                            in="fuzz"
-                            out="inv">
-                            <feFuncG type="table" tableValues="1 0"/>
-                            <feFuncB type="table" tableValues="1 0"/>
-                            <feFuncR type="table" tableValues="1 0"/>
-                        </feComponentTransfer>
-
-                        <feColorMatrix 
+                        <!--<feColorMatrix 
                             type="matrix"
-                            in="inv"
+                            in="fuzz"
                             result="opa"
                             values="1 0 0 0 0
                                     0 1 0 0 0
                                     0 0 1 0 0
-                                    0 0 0 .6 0"/>
+                                    0 0 0 .6 0"/>-->
 
-                        <feDisplacementMap 
+                        <!--<feDisplacementMap 
                             xChannelSelector="R" 
                             yChannelSelector="G" 
-                            in="SourceGraphic" 
+                            in="sat" 
                             in2="opa" 
                             result='mangled'
-                            scale="200" />
+                            scale="200" />-->
 
-                        <feComposite 
+                        <!--<feComposite 
                             in="sat" 
                             in2="mangled" 
                             result="blend1"
-                            operator="in"/>
+                            operator="in"/>-->
 
                     </filter>
                 </defs>
