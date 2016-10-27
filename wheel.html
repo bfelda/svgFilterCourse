@@ -67,23 +67,42 @@
                         0 0 0 1 0"/>-->
 
                 <!--<feConvolveMatrix
+                    edgeMode="duplicate" 
+                    kernelMatrix="
+                        9 0 0
+                        0 1 0
+                        0 0 -9"
+                    preserveAlpha='true'/>-->
+
+                <!--<feConvolveMatrix
+                    edgeMode="duplicate" 
+                    order="5"
+                    kernelMatrix="
+                        1   1   1   1  1 
+                        1  -2  -2  -2  1 
+                        1  -2  .01 -2  1 
+                        1  -2  -2  -2  1 
+                        1   1   1   1  1"
+                    preserveAlpha='true'/>-->
+
+                <!--<feConvolveMatrix
                     order="3"
                     edgeMode="duplicate" 
                     kernelMatrix="
-                        1   -1.3   1
-                    -1.3 -1.3 -1.3
-                        1   -1.3   1"
+                        1    -1.3   1
+                        -1.3 -1.3 -1.3
+                        1    -1.3   1"
                     preserveAlpha='false'/>-->
             </filter>
 
 
             <filter id="svgFiltered">
 
-                <feComponentTransfer>
-                    <feFuncG type="discrete" tableValues="0 .2 .4 .6 .8 1"/>
-                    <feFuncB type="discrete" tableValues="0 .2 .4 .6 .8 1"/>
-                    <feFuncR type="discrete" tableValues="0 .2 .4 .6 .8 1"/>
-                </feComponentTransfer>
+                <!--<feComponentTransfer>
+                    <feFuncG type="table" tableValues="0 1"/>
+                    <feFuncB type="table" tableValues="0 1"/>
+                    <feFuncR type="table" tableValues="0 1"/>
+                </feComponentTransfer>-->
 
                 <!--<feColorMatrix 
                     type="matrix"
